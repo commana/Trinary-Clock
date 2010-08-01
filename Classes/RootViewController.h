@@ -18,6 +18,11 @@
     MainViewController *mainViewController;
     FlipsideViewController *flipsideViewController;
     UINavigationBar *flipsideNavigationBar;
+	
+	Sinus *hour;
+	Sinus *minute;
+	Sinus *second;
+	Sinus *millisecond;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;

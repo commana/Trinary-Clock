@@ -35,7 +35,7 @@
 	return [[self dayComponents:date] second] / 60.0;
 }
 
-- (CGFloat)getMilliseconds:(NSDate *)date {
+- (CGFloat)getMillisecond:(NSDate *)date {
 	return [date timeIntervalSinceNow] * -1000.0;
 }
 
@@ -51,15 +51,26 @@
 	CGRect frame = mainViewController.view.frame;
 	NSDate *today = [NSDate date];
 	
-	Sinus *hour = [[[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3 startValue:[self getHour:today]] autorelease];
-	Sinus *mins = [[[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2 startValue:[self getMinute:today]] autorelease];
-	Sinus *secs = [[[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1.5 startValue:[self getSecond:today]] autorelease];
-	Sinus *mill = [[[Sinus alloc] initWithFrame:frame color:[UIColor grayColor] amplitude:0.1 thickness:1 startValue:[self getMilliseconds:today]] autorelease];
+	hour = [[[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3 startValue:[self getHour:today]] autorelease];
+	minute = [[[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2 startValue:[self getMinute:today]] autorelease];
+	second = [[[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1.5 startValue:[self getSecond:today]] autorelease];
+	millisecond = [[[Sinus alloc] initWithFrame:frame color:[UIColor grayColor] amplitude:0.1 thickness:1 startValue:[self getMillisecond:today]] autorelease];
 	
 	[mainViewController.view addSubview:hour];
-	[mainViewController.view addSubview:mins];
-	[mainViewController.view addSubview:secs];
-	[mainViewController.view addSubview:mill];
+	[mainViewController.view addSubview:minute];
+	[mainViewController.view addSubview:second];
+	[mainViewController.view addSubview:millisecond];
+	
+	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+}
+
+- (void)tick:(NSTimer *)timer {
+	NSDate *now = [NSDate date];
+	
+	[hour update:[self getHour:now]];
+	[minute update:[self getMinute:now]];
+	[second update:[self getSecond:now]];
+	[millisecond update:[self getMillisecond:now]];
 }
 
 

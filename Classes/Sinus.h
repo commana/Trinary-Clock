@@ -18,4 +18,6 @@
 
 - (id)initWithFrame:(CGRect)frame color:(UIColor *)graphColor amplitude:(CGFloat)ampl thickness:(CGFloat)thick startValue:(CGFloat)startValue;
 
+- (void)update:(CGFloat)updateValue;
+
 @end

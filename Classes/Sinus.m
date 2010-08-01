@@ -22,6 +22,9 @@
     return self;
 }
 
+- (void)update:(CGFloat)updateValue {
+	NSLog(@"%f", updateValue);
+}
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
