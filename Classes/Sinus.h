@@ -12,9 +12,10 @@
 @interface Sinus : UIView {
 	UIColor *color;
 	CGFloat amplitude;
-	int thickness;
+	CGFloat thickness;
+	CGFloat initValue;
 }
 
-- (id)initWithFrame:(CGRect)frame color:(UIColor *)graphColor amplitude:(CGFloat)ampl thickness:(int)thick;
+- (id)initWithFrame:(CGRect)frame color:(UIColor *)graphColor amplitude:(CGFloat)ampl thickness:(CGFloat)thick startValue:(CGFloat)startValue;
 
 @end

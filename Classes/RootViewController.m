@@ -18,6 +18,26 @@
 @synthesize mainViewController;
 @synthesize flipsideViewController;
 
+- (NSDateComponents *)dayComponents:(NSDate *)date {
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	return [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+}
+
+- (CGFloat)getHour:(NSDate *)date {
+	return [[self dayComponents:date] hour] / 24.0;
+}
+
+- (CGFloat)getMinute:(NSDate *)date {
+	return [[self dayComponents:date] minute] / 60.0;
+}
+
+- (CGFloat)getSecond:(NSDate *)date {
+	return [[self dayComponents:date] second] / 60.0;
+}
+
+- (CGFloat)getMilliseconds:(NSDate *)date {
+	return [date timeIntervalSinceNow] * -1000.0;
+}
 
 - (void)viewDidLoad {
     
@@ -29,14 +49,17 @@
     [self.view insertSubview:mainViewController.view belowSubview:infoButton];
 	
 	CGRect frame = mainViewController.view.frame;
+	NSDate *today = [NSDate date];
 	
-	Sinus *hour = [[[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3] autorelease];
-	Sinus *mins = [[[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2] autorelease];
-	Sinus *secs = [[[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1] autorelease];
+	Sinus *hour = [[[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3 startValue:[self getHour:today]] autorelease];
+	Sinus *mins = [[[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2 startValue:[self getMinute:today]] autorelease];
+	Sinus *secs = [[[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1.5 startValue:[self getSecond:today]] autorelease];
+	Sinus *mill = [[[Sinus alloc] initWithFrame:frame color:[UIColor grayColor] amplitude:0.1 thickness:1 startValue:[self getMilliseconds:today]] autorelease];
 	
 	[mainViewController.view addSubview:hour];
 	[mainViewController.view addSubview:mins];
 	[mainViewController.view addSubview:secs];
+	[mainViewController.view addSubview:mill];
 }
 
 

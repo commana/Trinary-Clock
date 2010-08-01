@@ -11,11 +11,12 @@
 
 @implementation Sinus
 
-- (id)initWithFrame:(CGRect)frame color:(UIColor *)graphColor amplitude:(CGFloat)ampl thickness:(int)thick {
+- (id)initWithFrame:(CGRect)frame color:(UIColor *)graphColor amplitude:(CGFloat)ampl thickness:(CGFloat)thick startValue:(CGFloat)startValue {
     if (self = [super initWithFrame:frame]) {
 		color = [graphColor retain];
 		amplitude = ampl;
 		thickness = thick;
+		initValue = startValue;
 		self.backgroundColor = [UIColor clearColor];
     }
     return self;
@@ -27,7 +28,7 @@
 	CGContextSetLineWidth(context, thickness);
 	[color set];
 	
-	CGFloat init = 1.0; // ???
+	CGFloat init = initValue;
 	
 	CGFloat width = rect.size.width;
 	CGFloat height = rect.size.height;
