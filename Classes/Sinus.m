@@ -16,7 +16,7 @@
 		color = [graphColor retain];
 		amplitude = ampl;
 		thickness = thick;
-		self.backgroundColor = [UIColor orangeColor];
+		self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -24,6 +24,7 @@
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSetLineWidth(context, thickness);
 	[color set];
 	
 	CGFloat init = 1.0; // ???
