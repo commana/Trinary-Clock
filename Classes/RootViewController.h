@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Sinus.h"
 
 @class MainViewController;
 @class FlipsideViewController;

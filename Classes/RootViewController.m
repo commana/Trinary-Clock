@@ -27,6 +27,7 @@
     [viewController release];
     
     [self.view insertSubview:mainViewController.view belowSubview:infoButton];
+	[mainViewController.view addSubview:[[[Sinus alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 320.0) color:[UIColor blueColor] amplitude:0.2 thickness:3] autorelease]];
 }
 
 
