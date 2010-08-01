@@ -51,6 +51,7 @@
 		7409C9E11205A2D1004E0CF9 /* Sinus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sinus.m; path = Classes/Sinus.m; sourceTree = "<group>"; };
 		74B0DFE71205DAC9004A7C38 /* trinary-clock-graph-explanation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trinary-clock-graph-explanation.png"; sourceTree = "<group>"; };
 		74B0E0791205FB12004A7C38 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		74B0E0BF1205FD5B004A7C38 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +144,7 @@
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				74B0E0791205FB12004A7C38 /* LICENSE */,
+				74B0E0BF1205FD5B004A7C38 /* README.md */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
