@@ -3,7 +3,7 @@
 //  trinary-clock
 //
 //  Created by Christoph Thelen on 01.08.10.
-//  Copyright __MyCompanyName__ 2010. All rights reserved.
+//  Copyright Christoph Thelen 2010. All rights reserved.
 //
 
 #import "MainViewController.h"
