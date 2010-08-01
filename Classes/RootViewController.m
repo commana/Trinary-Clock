@@ -36,7 +36,12 @@
 }
 
 - (CGFloat)getMillisecond {
-	return [dateTime timeIntervalSinceReferenceDate] * -1000.0;
+	NSTimeInterval interval = [NSDate timeIntervalSinceReferenceDate];
+	NSString *intervalString = [NSString stringWithFormat:@"%f", interval];
+	NSArray *components = [intervalString componentsSeparatedByString:@"."];
+	CGFloat milliseconds = [[components objectAtIndex:1] floatValue] / (1000.0 * 1000.0);
+	
+	return milliseconds;
 }
 
 - (void)viewDidLoad {
@@ -65,14 +70,13 @@
 }
 
 - (void)tick:(NSTimer *)timer {
-	NSTimeInterval interval = [dateTime timeIntervalSinceNow] * -1000.0;
 	[dateTime release];
 	dateTime = [[NSDate date] retain];
 	
 	[hour update:[self getHour]];
 	[minute update:[self getMinute]];
 	[second update:[self getSecond]];
-	[millisecond update:interval];
+	[millisecond update:[self getMillisecond]];
 }
 
 
