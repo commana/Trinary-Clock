@@ -18,25 +18,25 @@
 @synthesize mainViewController;
 @synthesize flipsideViewController;
 
-- (NSDateComponents *)dayComponents:(NSDate *)date {
+- (NSDateComponents *)dayComponents {
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	return [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+	return [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:dateTime];
 }
 
-- (CGFloat)getHour:(NSDate *)date {
-	return [[self dayComponents:date] hour] / 24.0;
+- (CGFloat)getHour {
+	return [[self dayComponents] hour] / 24.0;
 }
 
-- (CGFloat)getMinute:(NSDate *)date {
-	return [[self dayComponents:date] minute] / 60.0;
+- (CGFloat)getMinute {
+	return [[self dayComponents] minute] / 60.0;
 }
 
-- (CGFloat)getSecond:(NSDate *)date {
-	return [[self dayComponents:date] second] / 60.0;
+- (CGFloat)getSecond {
+	return [[self dayComponents] second] / 60.0;
 }
 
-- (CGFloat)getMillisecond:(NSDate *)date {
-	return [date timeIntervalSinceNow] * -1000.0;
+- (CGFloat)getMillisecond {
+	return [dateTime timeIntervalSinceReferenceDate] * -1000.0;
 }
 
 - (void)viewDidLoad {
@@ -49,28 +49,30 @@
     [self.view insertSubview:mainViewController.view belowSubview:infoButton];
 	
 	CGRect frame = mainViewController.view.frame;
-	NSDate *today = [NSDate date];
+	dateTime = [[NSDate date] retain];
 	
-	hour = [[[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3 startValue:[self getHour:today]] autorelease];
-	minute = [[[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2 startValue:[self getMinute:today]] autorelease];
-	second = [[[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1.5 startValue:[self getSecond:today]] autorelease];
-	millisecond = [[[Sinus alloc] initWithFrame:frame color:[UIColor grayColor] amplitude:0.1 thickness:1 startValue:[self getMillisecond:today]] autorelease];
+	hour = [[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3 startValue:[self getHour]];
+	minute = [[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2 startValue:[self getMinute]];
+	second = [[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1.5 startValue:[self getSecond]];
+	millisecond = [[Sinus alloc] initWithFrame:frame color:[UIColor grayColor] amplitude:0.1 thickness:1 startValue:[self getMillisecond]];
 	
 	[mainViewController.view addSubview:hour];
 	[mainViewController.view addSubview:minute];
 	[mainViewController.view addSubview:second];
 	[mainViewController.view addSubview:millisecond];
 	
-	[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:0.0001 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
 }
 
 - (void)tick:(NSTimer *)timer {
-	NSDate *now = [NSDate date];
+	NSTimeInterval interval = [dateTime timeIntervalSinceNow] * -1000.0;
+	[dateTime release];
+	dateTime = [[NSDate date] retain];
 	
-	[hour update:[self getHour:now]];
-	[minute update:[self getMinute:now]];
-	[second update:[self getSecond:now]];
-	[millisecond update:[self getMillisecond:now]];
+	[hour update:[self getHour]];
+	[minute update:[self getMinute]];
+	[second update:[self getSecond]];
+	[millisecond update:interval];
 }
 
 
@@ -156,6 +158,14 @@
     [flipsideNavigationBar release];
     [mainViewController release];
     [flipsideViewController release];
+	
+	[dateTime release];
+	
+	[hour release];
+	[minute release];
+	[second release];
+	[millisecond release];
+	
     [super dealloc];
 }
 

@@ -23,6 +23,8 @@
 	Sinus *minute;
 	Sinus *second;
 	Sinus *millisecond;
+	
+	NSDate *dateTime;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;

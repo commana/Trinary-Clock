@@ -23,7 +23,8 @@
 }
 
 - (void)update:(CGFloat)updateValue {
-	NSLog(@"%f", updateValue);
+	initValue = updateValue;
+	[self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
