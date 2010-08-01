@@ -27,7 +27,16 @@
     [viewController release];
     
     [self.view insertSubview:mainViewController.view belowSubview:infoButton];
-	[mainViewController.view addSubview:[[[Sinus alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 320.0) color:[UIColor blueColor] amplitude:0.2 thickness:3] autorelease]];
+	
+	CGRect frame = mainViewController.view.frame;
+	
+	Sinus *hour = [[[Sinus alloc] initWithFrame:frame color:[UIColor redColor] amplitude:0.8 thickness:3] autorelease];
+	Sinus *mins = [[[Sinus alloc] initWithFrame:frame color:[UIColor greenColor] amplitude:0.5 thickness:2] autorelease];
+	Sinus *secs = [[[Sinus alloc] initWithFrame:frame color:[UIColor blueColor] amplitude:0.2 thickness:1] autorelease];
+	
+	[mainViewController.view addSubview:hour];
+	[mainViewController.view addSubview:mins];
+	[mainViewController.view addSubview:secs];
 }
 
 
