@@ -24,14 +24,13 @@
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextMoveToPoint(context, 0, 0);
 	[color set];
 	
-	CGFloat confInit = 1; // ???
+	CGFloat init = 1.0; // ???
 	
 	CGFloat width = rect.size.width;
 	CGFloat height = rect.size.height;
-	CGFloat init = 2 * confInit + 1;
+	init = 2 * init + 1;
 	
 	CGFloat halfHeight = height / 2;
 	CGFloat offsetY = halfHeight * (1 - amplitude);
@@ -39,11 +38,19 @@
 	
 	init *= width / 2;
 	
-	for (int i=0; i < width; i += 10) {
+	CGContextBeginPath(context);
+	
+	int iterations = (int)width / 10 + 1;
+	CGPoint *points = malloc(iterations * sizeof(CGPoint));
+	for (int i=0, j=0; j <= iterations; i += 10, j++) {
 		CGFloat f = k * (i + init);
 		CGFloat y = offsetY + amplitude * halfHeight * (1 + cos(f));
-		CGContextAddLineToPoint(context, i, y);
+		points[j] = CGPointMake(i, y);
 	}
+	CGContextAddLines(context, points, iterations);
+	free(points);
+	
+	CGContextDrawPath(context, kCGPathStroke);
 }
 
 
