@@ -21,6 +21,7 @@
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		7409C9E21205A2D1004E0CF9 /* Sinus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7409C9E11205A2D1004E0CF9 /* Sinus.m */; };
+		74B0DFE81205DAC9004A7C38 /* trinary-clock-graph-explanation.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B0DFE71205DAC9004A7C38 /* trinary-clock-graph-explanation.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		32CA4F630368D1EE00C91783 /* trinary_clock_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trinary_clock_Prefix.pch; sourceTree = "<group>"; };
 		7409C9E01205A2D1004E0CF9 /* Sinus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sinus.h; path = Classes/Sinus.h; sourceTree = "<group>"; };
 		7409C9E11205A2D1004E0CF9 /* Sinus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sinus.m; path = Classes/Sinus.m; sourceTree = "<group>"; };
+		74B0DFE71205DAC9004A7C38 /* trinary-clock-graph-explanation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trinary-clock-graph-explanation.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				74B0DFE71205DAC9004A7C38 /* trinary-clock-graph-explanation.png */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
@@ -212,6 +215,7 @@
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
+				74B0DFE81205DAC9004A7C38 /* trinary-clock-graph-explanation.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
