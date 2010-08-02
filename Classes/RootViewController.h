@@ -32,8 +32,8 @@
 @interface RootViewController : UIViewController {
 
     UIButton *infoButton;
-    MainViewController *mainViewController;
-    FlipsideViewController *flipsideViewController;
+    UIViewController *mainViewController;
+    UIViewController *flipsideViewController;
     UINavigationBar *flipsideNavigationBar;
 	
 	Sinus *hour;
@@ -45,9 +45,9 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) MainViewController *mainViewController;
+@property (nonatomic, retain) UIViewController *mainViewController;
 @property (nonatomic, retain) UINavigationBar *flipsideNavigationBar;
-@property (nonatomic, retain) FlipsideViewController *flipsideViewController;
+@property (nonatomic, retain) UIViewController *flipsideViewController;
 
 - (IBAction)toggleView;
 

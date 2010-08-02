@@ -24,8 +24,6 @@
 //  THE SOFTWARE.
 
 #import "RootViewController.h"
-#import "MainViewController.h"
-#import "FlipsideViewController.h"
 
 
 @implementation RootViewController
@@ -64,7 +62,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    MainViewController *viewController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
+    UIViewController *viewController = [[UIViewController alloc] initWithNibName:@"MainView" bundle:nil];
     self.mainViewController = viewController;
     [viewController release];
     
@@ -98,8 +96,8 @@
 
 
 - (void)loadFlipsideViewController {
-    
-    FlipsideViewController *viewController = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+	
+    UIViewController *viewController = [[UIViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
     self.flipsideViewController = viewController;
     [viewController release];
     

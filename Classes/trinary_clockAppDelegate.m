@@ -34,7 +34,7 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
+	
     [window addSubview:[rootViewController view]];
     [window makeKeyAndVisible];
 }
