@@ -35,7 +35,9 @@
 
 - (NSDateComponents *)dayComponents {
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	return [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:dateTime];
+	NSDateComponents *components = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:dateTime];
+	[gregorian release];
+	return components;
 }
 
 - (CGFloat)getHour {
