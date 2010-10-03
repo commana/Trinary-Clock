@@ -62,8 +62,8 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
+	
     UIViewController *viewController = [[UIViewController alloc] initWithNibName:@"MainView" bundle:nil];
     self.mainViewController = viewController;
     [viewController release];
@@ -98,7 +98,6 @@
 
 
 - (void)loadFlipsideViewController {
-	
     UIViewController *viewController = [[UIViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
     self.flipsideViewController = viewController;
     [viewController release];
@@ -143,7 +142,6 @@
         [self.view insertSubview:flipsideNavigationBar aboveSubview:flipsideView];
         [mainViewController viewDidDisappear:YES];
         [flipsideViewController viewDidAppear:YES];
-
     } else {
         [mainViewController viewWillAppear:YES];
         [flipsideViewController viewWillDisappear:YES];
